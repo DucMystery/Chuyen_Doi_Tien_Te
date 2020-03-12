@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng Dụng Chuyển Đổi Tiền Tệ</title>
+</head>
+<body>
+   <form>
+       <table>
+           <tr>
+               <td>Amount</td>
+               <td>FromCurrency</td>
+               <td>ToCurrency</td>
+           </tr>
+           <tr>
+               <td><input type="number" id="number"/></td>
+               <td>
+                   <select id="FromCurrency" style="width: 80px">
+                       <option value="VND">VND</option>
+                       <option value="USD">USD</option>
+                   </select>
+               </td>
+               <td>
+                   <select id="ToCurrency" style="width: 80px">
+                       <option value="VND">VND</option>
+                       <option value="USD">USD</option>
+                   </select>
+               </td>
+           </tr>
+       </table>
+       <button type="button" onclick="swap()">Swap</button>
+       <p id="result"></p>
+   </form>
+ <script>
+     function swap() {
+         let vnd=1;
+         let usd =23000;
+         let t =parseInt(document.getElementById("number").value);
+         let result=0;
+         if (document.getElementById("FromCurrency").value==='VND' && document.getElementById("ToCurrency").value==='VND'){
+             result=t*vnd/vnd;
+             document.getElementById("result").innerHTML=result.toFixed(2);
+         }else if (document.getElementById("FromCurrency").value ==='VND' && document.getElementById("ToCurrency").value ==='USD'){
+             result=t*vnd/usd;
+             document.getElementById("result").innerHTML=result.toFixed(5);
+         }else if (document.getElementById("FromCurrency").value ==='USD' && document.getElementById("ToCurrency").value ==='VND'){
+             result=t*usd/vnd;
+             document.getElementById("result").innerHTML=result.toFixed(2);
+         }else {
+             document.getElementById("result").innerHTML =t;
+         }
+     }
+ </script>
+</body>
+</html>
